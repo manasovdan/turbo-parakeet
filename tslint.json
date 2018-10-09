@@ -1,6 +1,18 @@
 {
-  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "extends": [
+    "tslint:recommended",
+    "tslint-react",
+    "tslint-config-prettier"
+  ],
   "defaultSeverity": "warning",
+  "rules": {
+    "variable-name": [
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore"
+    ],
+    "jsx-no-lambda": false
+  },
   "linterOptions": {
     "exclude": [
       "config/**/*.js",

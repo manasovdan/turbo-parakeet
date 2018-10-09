@@ -8,10 +8,12 @@ import GameStore from './stores'
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
-const rootStore = new GameStore();
+const gameStore = new GameStore();
+const allStores = {gameStore};
+export type AllStores = typeof allStores;
 
 ReactDOM.render(
-    <Provider store={rootStore}>
+    <Provider {...allStores}>
         <App />
     </Provider>,
     document.getElementById('root') as HTMLElement

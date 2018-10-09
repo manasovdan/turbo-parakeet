@@ -1,0 +1,18 @@
+.cards-board {
+  display: grid;
+  grid-gap: 10px;
+  justify-content: center;
+  margin-bottom: 100px;
+}
+
+.cards-board.Easy {
+  grid-template-columns: repeat(4, 150px);
+}
+
+.cards-board.Medium {
+  grid-template-columns: repeat(6, 150px);
+}
+
+.cards-board.Hard {
+  grid-template-columns: repeat(8, 150px);
+}
