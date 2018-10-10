@@ -207,7 +207,7 @@ class GameBoard extends React.Component<IGameBoardProps, IGameBoardState> {
     }
 }
 
-
+//analog of mapStateToProps. Have to pick key by key to watch properies change
 const GameBoardConnected = inject((allStores: AllStores): IGameBoardProps => {
     const gameStore = allStores.gameStore as GameStore;
     return {
