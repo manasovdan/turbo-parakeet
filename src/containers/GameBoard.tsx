@@ -5,6 +5,7 @@ import {AllStores} from "../index";
 import GameStore from "../stores/index";
 import {Difficulty, ICard} from "../types/index";
 import './GameBoard.css'
+import GameControllers from "../components/GameControllers";
 
 const cardImages = ["🐭", "🐰", "🐶", "🐺", "🦊", "🐵", "🐸", "🐯", "🦁", "🦓", "🦒", "🐴", "🐮", "🐷", "🐻", "🐼", "🐲",
     "🦄", "🐱", "🦉", "🦅", "🦇", "🐨", "🐢", "🐊", "🦖", "🦋", "🐞", "🕷", "🐛", "🐜", "🐝"];
@@ -180,17 +181,9 @@ class GameBoard extends React.Component<IGameBoardProps, IGameBoardState> {
         const nonPlayingState = this.state.gameWon || props.isGameFinished;
         return (
             <div className={`game-board ${difficultyName}`}>
-                <div className="game-board__controllers">
-                    <select name="difficulty-selector" id="difficulty-selector"
-                            disabled={!props.isGameFinished}
-                            onChange={this.changeDifficulty}
-                            className="game-board__difficulty-select">
-                        <option value="0">Easy</option>
-                        <option value="1">Medium</option>
-                        <option value="2">Hard</option>
-                    </select>
-                    <button className="game-board__start-btn" onClick={props.startGame}>Start Game</button>
-                </div>
+                <GameControllers isGameFinished={props.isGameFinished!}
+                                 startGame={props.startGame!}
+                                 changeDifficulty={this.changeDifficulty} />
                 <p className="game-board__countdown">Time left: {props.timer}s</p>
                 {
                     nonPlayingState ? 'Game is finished. Would you like to start a new one?' :
@@ -207,7 +200,7 @@ class GameBoard extends React.Component<IGameBoardProps, IGameBoardState> {
     }
 }
 
-//analog of mapStateToProps. Have to pick key by key to watch properies change
+// analog of mapStateToProps. Have to pick key by key to watch properies change
 const GameBoardConnected = inject((allStores: AllStores): IGameBoardProps => {
     const gameStore = allStores.gameStore as GameStore;
     return {
